@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install lxml requests numpy pandas beautifulsoup4 selenium typing_extensions
+          pip install lxml requests numpy pandas beautifulsoup4 selenium typing_extensions dateparser
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Setup VVOS
         # You may pin to the exact commit or the version.
