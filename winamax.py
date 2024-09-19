@@ -287,7 +287,7 @@ class Winamax(OddsScraper):
         response = requests.get(self.sport_url, headers=generate_random_headers())
         #response = requests.get(self.sport_url)
         html = response.text
-        print(html)
+        #print(html)
         split1 = html.split("var PRELOADED_STATE = ")[1]
         split2 = split1.split(";</script>")[0]
         json2 = json.loads(split2)
@@ -351,8 +351,9 @@ class Winamax(OddsScraper):
                 self.dico[json3["matches"][str(match_name)]["title"]] = type_bets
 
                 dico_dates = {}
+                print("OK pour dispatch dates")
                 for match_name, match_data in self.dico.items():
-                    print(match_name)
+                    #print(match_name)
                     #print(match_data)
 
                     # Extraire la date du dictionnaire match_data
