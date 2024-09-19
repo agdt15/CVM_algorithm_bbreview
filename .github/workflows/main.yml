@@ -1,0 +1,58 @@
+name: win_Basket_pre
+on: 
+  workflow_dispatch:
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    env : 
+      TYPE_SCRAP: pre
+      SPORT_NAME: Basket
+      BOOKMAKER : Winamax
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set Git Config
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Fetch and Pull Changes
+        run: |
+          git fetch origin
+          git pull origin main
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x # replace with your desired version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install lxml requests numpy pandas beautifulsoup4 selenium typing_extensions
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Setup VVOS
+        # You may pin to the exact commit or the version.
+        # uses: browser-actions/setup-chrome@c485fa3bab6be59dce18dbc18ef6ab7cbc8ff5f1
+        uses: browser-actions/setup-chrome@v1.2.0
+        with:
+          # The Google Chrome/Chromium version to install and use.
+          chrome-version: # optional, default is latest
+      - name: setup VVM
+        # You may pin to the exact commit or the version.
+        # uses: nanasess/setup-chromedriver@7cbd35794f8ab317f778c3172fb86c1e9b2853f7
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          # The chromedriver version to installl
+          chromedriver-version: # optional
+      - name: Prepare validation
+        uses: nanasess/setup-chromedriver@master
+      - name: Run script
+        run: python launcher.py # replace with the name of your script
+        
+      - name: Commit results
+        run: |
+          git pull origin main
+          git add -A
+          git commit -m 'Check pm data'
+          git push origin main
