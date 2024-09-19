@@ -321,7 +321,7 @@ class Winamax(OddsScraper):
                     try:
                         c += 1
                         main_bet = i
-                        print(main_bet["betTitle"])
+                        #print(main_bet["betTitle"])
                         if main_bet["betTitle"] not in type_bets:
                             type_bets[main_bet["betTitle"]] = {outcomes[str(outcome)]["label"]: {"odds": str(
                                 odds[str(outcome)]), "percentDistribution": outcomes[str(outcome)].get("percentDistribution")} for outcome in main_bet.get("outcomes")}
@@ -330,7 +330,7 @@ class Winamax(OddsScraper):
                             type_bets[main_bet["betTitle"]].update({outcomes[str(outcome)]["label"]: {"odds": str(
                                 odds[str(outcome)]), "percentDistribution": outcomes[str(outcome)].get("percentDistribution")} for outcome in main_bet.get("outcomes")})
                             for outcome in main_bet.get("outcomes"):
-                                print(outcomes[str(outcome)]["label"]+" : "+str(odds[str(outcome)]))
+                                #print(outcomes[str(outcome)]["label"]+" : "+str(odds[str(outcome)]))
                     except StopIteration:
                         break
                 time.sleep(random.randint(2, 4))
@@ -355,7 +355,7 @@ class Winamax(OddsScraper):
                 dico_dates = {}
                 for match_name, match_data in self.dico.items():
                     print(match_name)
-                    print(match_data)
+                    #print(match_data)
 
                     # Extraire la date du dictionnaire match_data
                     date_element = match_data["Date"]
