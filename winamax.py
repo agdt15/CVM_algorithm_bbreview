@@ -30,6 +30,7 @@ class Winamax(OddsScraper):
     def __init__(self, sport, type_scrap, mise_base, date, delta=0, verbose=True, headless=True):
         self.sport = sport
         self.date = date
+        self.dates = []
         self.bookmaker = "winamax"
         self.type_scrap = type_scrap
         self.sport_url = "https://www.winamax.fr/paris-sportifs/sports/"+str(dico_sports[sport]["sport_id"]["Winamax"])
@@ -283,8 +284,8 @@ class Winamax(OddsScraper):
             time.sleep(random.randint(self.pause, self.pause+5))
 
     def get_prematch(self):
-        response = requests.get(self.sport_url, headers=self.headers)
-        # response = requests.get(self.sport_url)
+        #response = requests.get(self.sport_url, headers=self.headers)
+        response = requests.get(self.sport_url)
         html = response.text
         split1 = html.split("var PRELOADED_STATE = ")[1]
         split2 = split1.split(";</script>")[0]
