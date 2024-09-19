@@ -321,16 +321,12 @@ class Winamax(OddsScraper):
                     try:
                         c += 1
                         main_bet = i
-                        #print(main_bet["betTitle"])
                         if main_bet["betTitle"] not in type_bets:
                             type_bets[main_bet["betTitle"]] = {outcomes[str(outcome)]["label"]: {"odds": str(
                                 odds[str(outcome)]), "percentDistribution": outcomes[str(outcome)].get("percentDistribution")} for outcome in main_bet.get("outcomes")}
-                            # print("new")
                         else:
                             type_bets[main_bet["betTitle"]].update({outcomes[str(outcome)]["label"]: {"odds": str(
                                 odds[str(outcome)]), "percentDistribution": outcomes[str(outcome)].get("percentDistribution")} for outcome in main_bet.get("outcomes")})
-                            for outcome in main_bet.get("outcomes"):
-                                #print(outcomes[str(outcome)]["label"]+" : "+str(odds[str(outcome)]))
                     except StopIteration:
                         break
                 time.sleep(random.randint(2, 4))
