@@ -12,21 +12,13 @@ type_scrap=os.environ["TYPE_SCRAP"]
 sport_name=os.environ["SPORT_NAME"]
 bookmaker=os.environ["BOOKMAKER"]
 
-
-from live_scrapping_manager import * 
-import os
-
-type_scrap=os.environ["TYPE_SCRAP"]
-sport_name=os.environ["SPORT_NAME"]
-bookmaker=os.environ["BOOKMAKER"]
-
 if bookmaker=="Winamax":
-    test=Winamax(sport=sport_name,type_scrap=type_scrap,mise_base=1,headless=True)
+    test=Winamax(sport=sport_name,type_scrap=type_scrap,mise_base=1,headless=True,date=datetime.date.today())
 else:
     pass
 test.load_data()
 try :
     test.scrape()
 finally:
-    test.save_data()
+    test.save_data2()
     print(str(datetime.datetime.now()))
