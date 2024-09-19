@@ -16,7 +16,6 @@ if bookmaker=="Winamax":
     test=Winamax(sport=sport_name,type_scrap=type_scrap,mise_base=1,headless=False,date=datetime.date.today())
 else:
     pass
-test.load_data()
 try :
     test.scrape()
 finally:
