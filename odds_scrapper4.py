@@ -49,9 +49,6 @@ dico_sports = {"Basket":{"sport_id":{"Winamax":"2","Unibet":"basketball","Betcli
 }
 
 """
-https://www.winamax.fr/paris-sportifs/match/1000047546
-"""
-"""
 dico_jo = {
 "Athletisme": {"sport_id":{"Winamax":"30/229","Unibet":"basketball","Betclic":"basket-ball-s4"},"dico_pre":"data_athletisme_pre_unibet","dico_live":"data_athletisme_live_unibet","pause":15,"token":"5930848243:AAFSlGL5lsw0oeCPsrHRNgUMfkEWndZ4LyY"},
 "Aviron":{"sport_id":{"Winamax":"30/514","Unibet":"basketball","Betclic":"basket-ball-s4"},"dico_pre":"data_aviron_pre_unibet","dico_live":"data_aviron_live_unibet","pause":15,"token":"5930848243:AAFSlGL5lsw0oeCPsrHRNgUMfkEWndZ4LyY"},
@@ -114,13 +111,6 @@ dico_jo = {
 
 dico_sports.update(dico_jo)
 """
-
-#axel alexis "2007088877"
-ids_telegram=["5808361291"]
-
-
-
-
 
 def generate_random_headers():
     headers = {}
