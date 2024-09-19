@@ -122,17 +122,6 @@ def generate_random_headers():
     headers['Accept-Language'] = random.choice(accept_language)
     return headers
 
-
-def send_telegram_alert(text,sport,ids=ids_telegram):
-    token = dico_sports[sport]["token"]
-    url = f"https://api.telegram.org/bot{token}"
-    message=text
-    for id_x in ids:
-        # params = {"chat_id": "5808361291", "text": message}
-        params = {"chat_id": id_x, "text": message}
-        r = requests.get(url + "/sendMessage", params=params)
-
-    
 def calcul_surebet(cote_a,cote_b):
     return 1/(1/cote_a+1/cote_b)
     
