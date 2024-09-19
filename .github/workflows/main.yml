@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env : 
       TYPE_SCRAP: pre
-      SPORT_NAME: Basket
+      SPORT_NAME: Tennis
       BOOKMAKER : Winamax
     steps:
       - name: Checkout repository
