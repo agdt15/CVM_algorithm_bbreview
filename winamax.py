@@ -284,9 +284,10 @@ class Winamax(OddsScraper):
             time.sleep(random.randint(self.pause, self.pause+5))
 
     def get_prematch(self):
-        #response = requests.get(self.sport_url, headers=self.headers)
-        response = requests.get(self.sport_url)
+        response = requests.get(self.sport_url, headers=generate_random_headers())
+        #response = requests.get(self.sport_url)
         html = response.text
+        print(html)
         split1 = html.split("var PRELOADED_STATE = ")[1]
         split2 = split1.split(";</script>")[0]
         json2 = json.loads(split2)
