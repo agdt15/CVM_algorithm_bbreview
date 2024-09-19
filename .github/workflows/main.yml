@@ -9,6 +9,8 @@ jobs:
       TYPE_SCRAP: pre
       SPORT_NAME: Tennis
       BOOKMAKER : Winamax
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
