@@ -26,7 +26,7 @@ from selenium.webdriver.chrome.options import Options
 import os
 import dateparser
 
-
+is_git = True
 
 
 #PARAMS
@@ -222,6 +222,8 @@ class OddsScraper():
                     else:
                         pass
                     """
+                  if is_git:
+                    
                 else:
                     print(f"No data for this sport at {self.bookmaker} as of today")
                         
@@ -268,7 +270,19 @@ class OddsScraper():
     def calcul_surbet(cote_a,cote_b):
         return 1/(1/cote_a+1/cote_b)
         
-        
+    def commit_data(self):
+      try:
+        commit_message = f"Add {self.type_scrap} {self.sport} {self.bookmaker} in data (Iteration {self.c})"
+        subprocess.run(["git", "add", self.data])
+        subprocess.run(["git", "commit", "-m", commit_message])
+        subprocess.run(["git", "pull", "origin", "main"])
+        subprocess.run(["git", "push", "origin", "main"])
+      
+        print(f"Committed data to {self.data}")
+      
+      except Exception as e:
+            print(f"Error committing data: {str(e)}")
+   
     
     def generate_random_headers():
         headers = {}
