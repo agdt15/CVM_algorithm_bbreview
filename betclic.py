@@ -42,7 +42,7 @@ from odds_scrapper4 import *
 
 
 class Betclic(OddsScraper):
-    def __init__(self,sport,type_scrap,mise_base,date,delta=0,verbose=False):
+    def __init__(self,sport,type_scrap,mise_base,date,delta=0,verbose=False, headless= False):
         self.sport=sport
         self.date=date
         self.bookmaker="betclic"
@@ -56,6 +56,7 @@ class Betclic(OddsScraper):
         self.headers=generate_random_headers()
         self.mise_base=mise_base
         self.verbose=verbose
+        self.headless = headless
         
     def scrape_live(self,surbet=False):
         #LOAD PRE LIVE ODDS
@@ -253,7 +254,8 @@ class Betclic(OddsScraper):
     def get_prematch(self):
         #LAUNCH betclic SESSION https://www.betclic.fr/football-s1/ligue-des-nations-uefa-c22676/france-belgique-m3002529585
         chrome_options = Options()
-        #chrome_options.add_argument('--headless')
+        if self.headless :
+            chrome_options.add_argument('--headless')
         driver = webdriver.Chrome(options=chrome_options)
         #driver.get("https://www.betclic.fr/tennis-s2")
         driver.get(self.sport_url)
