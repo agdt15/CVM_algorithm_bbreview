@@ -25,6 +25,8 @@ from selenium.webdriver.chrome.options import Options
 
 from odds_scrapper4 import * 
 from winamax import * 
+from unibet import * 
+from betclic import *
 
 for sp in sorted(list(dico_sports.keys()), key=lambda x: random.random()):
 
