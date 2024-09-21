@@ -222,8 +222,8 @@ class OddsScraper():
                     else:
                         pass
                     """
-                  if is_git:
-                    self.commit_data()
+                if is_git:
+                  self.commit_data()
                     
                 else:
                     print(f"No data for this sport at {self.bookmaker} as of today")
