@@ -30,7 +30,7 @@ from betclic import *
 
 for sp in sorted(list(dico_sports.keys()), key=lambda x: random.random()):
 
-    test_Winamax = Betclic(sport=sp, type_scrap="pre",
+    test_Winamax = Winamax(sport=sp, type_scrap="pre",
                            mise_base=1, delta=0, date=datetime.date.today(), headless=True)
     try:
         test_Winamax.scrape()
