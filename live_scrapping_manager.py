@@ -30,23 +30,26 @@ from betclic import *
 
 for sp in sorted(list(dico_sports.keys()), key=lambda x: random.random()):
 
-    test_Winamax = Winamax(sport=sp, type_scrap="pre",
-                           mise_base=1, delta=0, date=datetime.date.today(), headless=True)
-    try:
-        test_Winamax.scrape()
-    except (KeyError,TypeError):
-        print("attention on a eu un pb ici")
-        continue
-    except requests.exceptions.ConnectionError as e:
-        print("Connection error:", e)
-        pass
-    except requests.exceptions.Timeout as e:
-        print("Timeout error:", e)
-        pass
-    except requests.exceptions.RequestException as e:
-        print("Error:", e)
-        pass
-    except KeyboardInterrupt:
-        pass
-    finally:
-        test_Winamax.save_data2()
+    if sp == "Football":
+        continue 
+    else : 
+        test_Winamax = Winamax(sport=sp, type_scrap="pre",
+                               mise_base=1, delta=0, date=datetime.date.today(), headless=True)
+        try:
+            test_Winamax.scrape()
+        except (KeyError,TypeError):
+            print("attention on a eu un pb ici")
+            continue
+        except requests.exceptions.ConnectionError as e:
+            print("Connection error:", e)
+            pass
+        except requests.exceptions.Timeout as e:
+            print("Timeout error:", e)
+            pass
+        except requests.exceptions.RequestException as e:
+            print("Error:", e)
+            pass
+        except KeyboardInterrupt:
+            pass
+        finally:
+            test_Winamax.save_data2()
