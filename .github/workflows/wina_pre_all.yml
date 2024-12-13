@@ -1,7 +1,5 @@
 name: WINA_PRE_ALL
 on: 
-  schedule : 
-    - cron : "3 */6 * * *"
   workflow_dispatch:
 
 jobs:
